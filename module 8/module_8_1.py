@@ -40,7 +40,7 @@ def add_everything_up(a, b):
         return  c
     else:
         print(f'результат сложения: {c}' )
-        return c
+        # return c
 
 print(add_everything_up(123.456, 'строка'))
 print(add_everything_up('яблоко', 4215))

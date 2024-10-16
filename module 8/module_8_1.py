@@ -36,8 +36,11 @@ def add_everything_up(a, b):
         c = a + b
     except TypeError as exp:
         print('Тут ошибка:', exp)
+        c = str(a) + str(b)
+        return  c
     else:
         print(f'результат сложения: {c}' )
+        return c
 
 print(add_everything_up(123.456, 'строка'))
 print(add_everything_up('яблоко', 4215))

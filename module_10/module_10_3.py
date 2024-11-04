@@ -93,7 +93,7 @@ class Bank:
                 self.balance += replenishment  # пополнение баланса
                 print(f"Пополнение: {replenishment}. Баланс: {self.balance}", flush=True)
 
-                # if self.balance >= 500 and self.lock.locked():    это условие мне не нежено при использовании with
+                # if self.balance >= 500 and self.lock.locked():    это условие мне не нужно при использовании with
                     # self.lock.release()
 
         time.sleep(0.001)  # ожидание в 0.001 секунды, тем самым имитируя скорость выполнения пополнения

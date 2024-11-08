@@ -1,48 +1,66 @@
+# Класс базы данных, предназначен для хранения данных пользователей
 class Database:
     def __init__(self):
+        # Словарь для хранения данных пользователей в формате {логин: пароль}
         self.data = {}
 
+    # Метод для добавления пользователя в базу данных
     def add_user(self, username, password):
+        # Добавляем пользователя в словарь с логином и паролем
         self.data[username] = password
 
 
+# Класс пользователя
 class User:
-    """"
-    Класс пользователя, содержащий атрибуты: логин, пароль
-
+    """
+    Класс пользователя, содержащий атрибуты:
+    - username: логин пользователя
+    - password: пароль пользователя
     """
     def __init__(self, username, password, passord_confirm):
-        self.username = username
+        self.username = username  # Установка логина пользователя
+        # Проверка, совпадают ли пароль и его подтверждение
         if password == passord_confirm:
-            self.password = password
+            self.password = password  # Установка пароля, если они совпадают
 
+
+# Основной блок кода для взаимодействия с пользователем
 if __name__ == '__main__':
+    # Создание объекта базы данных
     database = Database()
+
+    # Основной цикл программы
     while True:
+        # Пользователь выбирает действие: Вход или Регистрация
         choice = int(input('Приветствую! Выберите действие: \n1 - Вход\n2 - Регистрация\n'))
+
+        # Обработка входа в систему
         if choice == 1:
-            login = input('Введите логин: ')
-            password = input('Введите пароль: ')
-            if login in database.data:
-                if password == database.data[login]:
+            login = input('Введите логин: ')  # Запрос логина
+            password = input('Введите пароль: ')  # Запрос пароля
+            if login in database.data:  # Проверка, существует ли пользователь
+                if password == database.data[login]:  # Проверка правильности пароля
                     print(f'Вход выполнен, {login}')
-                    break
+                    break  # Выход из цикла после успешного входа
                 else:
-                    print('Неверный пароль')
+                    print('Неверный пароль')  # Сообщение об ошибке пароля
             else:
-                print('Пользователь не найден')
+                print('Пользователь не найден')  # Сообщение об отсутствии пользователя
+
+        # Обработка регистрации нового пользователя
         if choice == 2:
-            user = User(input("ВВедите логин: "), password := input("Введите пароль: "),
-                        password2 := input("Повторите пароль: "))
+            # Создание нового объекта пользователя с логином и паролем
+            user = User(
+                input("Введите логин: "),
+                password := input("Введите пароль: "),
+                password2 := input("Повторите пароль: ")
+            )
+
+            # Проверка совпадения пароля и подтверждения
             if password != password2:
-                print('Паролт не совпадают')
-                continue
+                print('Пароли не совпадают')
+                continue  # Возврат в начало цикла, если пароли не совпадают
+
+            # Добавление пользователя в базу данных
             database.add_user(user.username, user.password)
-            print(database.data)
-
-
-
-
-
-
-
+            print(database.data)  # Вывод текущего состояния базы данных

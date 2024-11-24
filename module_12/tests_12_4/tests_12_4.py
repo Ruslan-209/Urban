@@ -43,8 +43,3 @@ class RunnerTest(unittest.TestCase):
 if __name__ == "__main__":
     unittest.main()
 
-# logging.debug('joo')
-# logging.info('jj')
-#
-# logging.error('yy')
-# logging.critical('ttt')

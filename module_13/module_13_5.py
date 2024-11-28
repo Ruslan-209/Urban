@@ -15,15 +15,14 @@ from aiogram.types import ReplyKeyboardMarkup,KeyboardButton
 import asyncio
 
 
-api = ''
+api = '7712655756:AAE1AvJF7XkkyLTaP9TgM2w56YXh-WKXV6s'
 bot = Bot(token= api)
 dp = Dispatcher(bot, storage= MemoryStorage())
 
-kb = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=True)
+kb = ReplyKeyboardMarkup(resize_keyboard=True)
 button = KeyboardButton(text= 'Информация')
 button2 = KeyboardButton(text= 'Рассчитать')
-kb.add(button)
-kb.add(button2)
+kb.add(button, button2)
 
 class UserState(StatesGroup):
     age = State()
@@ -65,6 +64,10 @@ async def send_calories(message, state):
                          f'\n2) для мужчин: {10 * data["weight"] +6.25 * data["growth"] - 5 * data["age"] + 5} калорий'
                          )
     await state.finish()
+
+@dp.message_handler()
+async def all_massages(message):
+    await message.answer('Введите команду /start, чтобы начать общение.')
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)

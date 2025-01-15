@@ -38,8 +38,8 @@ async def get_users() -> dict:
     return users
 
 @app.post('/user/{username}/{age}')
-async def post_user(username: Annotated[str, Path(min_length=5, max_length=20, description='Enter username', example='UrbanUser')],
-                         age: int = Path(ge=18, le=120, description='Enter age', example='24')):
+async def post_user(username: Annotated[str, Path(min_length=5, max_length=20, description='Enter username', examples='UrbanUser')],
+                         age: int = Path(ge=18, le=120, description='Enter age', examples='24')):
     user_id = str(int(max(users, key=int)) + 1)
     users[user_id] = f'Имя: {username}, возраст:{age}'
     return f'User {user_id} is registered'
@@ -47,8 +47,8 @@ async def post_user(username: Annotated[str, Path(min_length=5, max_length=20, d
 @app.put('/user/{user_id}/{username}/{age}')
 async def update_user(
     user_id: str,
-    username: Annotated[str, Path(min_length=5, max_length=20, description='Enter your name', example='UrbanUser')],
-    age: int = Path(ge=18, le=120, description='Enter your age', example=20)
+    username: Annotated[str, Path(min_length=5, max_length=20, description='Enter your name', examples='UrbanUser')],
+    age: int = Path(ge=18, le=120, description='Enter your age', examples=20)
 ) -> str:
     if user_id not in users:
         raise HTTPException(status_code=404, detail=f'User {user_id} not found')

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+</head>
+<body>
+    <pagename>
+        {% block pagename %}
+        <h1>Заголовки страниц</h1>
+        {% endblock %}
+    </pagename>
+
+    <menu>
+         {% block menu %}
+         <ul>
+            <li> <a href="http://127.0.0.1:8000/"> Главная</a> </li>
+            <br>
+            <li> <a href="http://127.0.0.1:8000/games"> Магазин</a> </li>
+            <br>
+            <li> <a href="http://127.0.0.1:8000/cart"> Корзина</a> </li>
+        </ul>
+        {% endblock %}
+    </menu>
+
+    <content>
+        {% block content %}
+        <p></p>
+        {% endblock %}
+    </content>
+</body>
+</html>

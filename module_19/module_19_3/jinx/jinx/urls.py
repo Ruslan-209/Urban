@@ -22,12 +22,10 @@ from django.urls import path
 from task1.views import *
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('platform/', plat),
     path('platform/games/', games),
     path('platform/cart/', cart),
     path('platform/games/cart', cart),
     path('', sign_up_by_html),
     path('django_sign_up/', sign_up_by_django),
-    path('admin/', admin.site.urls),
 ]
